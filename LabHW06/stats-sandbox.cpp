@@ -1,4 +1,4 @@
-// Author: <Your Name Here>
+// Author: Eric Turner
 // Source File: stats-sandbox.cpp
 // Description: Analyzes the provided file for statistics.
 
@@ -28,12 +28,18 @@ int main(int argc, char* argv[]){
     }
     // Pull off numbers while we can.  This will stop at the end of the file.
     while(inFile >> number){
-      // TODO: Change this loop slightly
-      cout << count << ":" << number << endl;
+      numbers[count] = number;
       count++;
     }  
     
-    // TODO: Fill in here.
+    cout << "Count: " << count << endl;
+    cout << "Sum: " << arrSum(numbers, count) << endl;
+    cout << "Mean: " << arrMean(numbers, count) << endl;
+    cout << "Min: " << arrMin(numbers, count) << endl;
+    cout << "Max: " << arrMax(numbers, count) << endl;
+    // cout << "StdDev: " << arrStdDev(numbers, count) << endl;
+    cout << "Primes: " << arrNumPrimes(numbers, count) << endl;
+    cout << "Set Size: " << arrSetSize(numbers, count) << endl;
     
   }else{
     cout << "No parameters, or more than one parameter given.\n";
