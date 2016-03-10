@@ -18,7 +18,7 @@ const double delta = 0.0001;
 class WheelGetRadius : public CxxTest::TestSuite {
 public:
   void testGetRadius1(){
-    TS_ASSERT_DELTA(Wheel().getRadius(), 15/2., delta);
+    TS_ASSERT_DELTA(Wheel().getRadius(), 15., delta);
   }
 
   void testGetRadius2(){
@@ -133,7 +133,7 @@ public:
 class WheelGetDiameter : public CxxTest::TestSuite {
 public:
   void testGetDiameter1(){
-    TS_ASSERT_DELTA(Wheel().getDiameter(), 15, delta);
+    TS_ASSERT_DELTA(Wheel().getDiameter(), 30, delta);
   }
 
   void testGetDiameter2(){
@@ -148,7 +148,7 @@ public:
 class WheelGetCirc : public CxxTest::TestSuite {
 public:
   void testGetCircumference1(){
-    TS_ASSERT_DELTA(Wheel().getCircumference(), 47.1238, delta);
+    TS_ASSERT_DELTA(Wheel().getCircumference(), 94.2477, delta);
   }
 
   void testGetCircumference2(){
@@ -163,7 +163,7 @@ public:
 class WheelGetSA : public CxxTest::TestSuite {
 public:
   void testGetSA1(){
-    TS_ASSERT_DELTA(Wheel().getSurfaceArea(), 176.7145, delta);
+    TS_ASSERT_DELTA(Wheel().getSurfaceArea(), 706.8583, delta);
   }
 
   void testGetSA2(){
