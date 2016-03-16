@@ -93,14 +93,14 @@ public:
   
   void test6(){
     Crypto a("g");
-    TS_ASSERT_EQUALS(a.letterFreqStDev(a.caesarEncrypt("abz U")), 
-      a.letterFreqStDev("abz U"));
+    TS_ASSERT_DELTA(a.letterFreqStDev(a.caesarEncrypt("abz U")), 
+      a.letterFreqStDev("abz U"),0.0001);
   }
   
   void test7(){
     Crypto a("zz");
-    TS_ASSERT_EQUALS(a.letterFreqStDev(a.caesarEncrypt("abz U?")), 
-      a.letterFreqStDev("abz U?"));
+    TS_ASSERT_DELTA(a.letterFreqStDev(a.caesarEncrypt("abz U?")), 
+      a.letterFreqStDev("abz U?"),0.0001);
   }
   
   
