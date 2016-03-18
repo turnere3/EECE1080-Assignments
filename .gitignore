@@ -2,4 +2,8 @@
 temp*
 a.out
 OUTPUT
-
+*.o
+.depend
+testrunner
+testrunner.cpp
+*-sandbox
