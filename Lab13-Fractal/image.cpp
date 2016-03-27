@@ -14,6 +14,13 @@
 
 using namespace std;
 
+// Convenience function to set the red, green, and blue channels
+// at a given pixel location in the image.
+void setRGB(int x, int y, unsigned char red, unsigned char green, unsigned char blue, cil::CImg<unsigned char>& image){
+  *(image.data(x,y,0,0)) = red;
+  *(image.data(x,y,0,1)) = green;
+  *(image.data(x,y,0,2)) = blue;
+}
 
 int main(int argc, char* argv[]){
   // We accept 3 command-line paramters, filename, x and y
@@ -56,13 +63,15 @@ int main(int argc, char* argv[]){
       double complex = (double)y * dy * -1 + uri;
       // Now real and complex will be x and y from -100 to +100
       
-      // For this example, just do a fade
-      // There are 3 channels, R,G,B (0,1,2) which you can assign to.
+      // For this example, just do a fade.
+      // There are 3 channels, R,G,B  which you can assign to.
       // Each channel takes a single byte 0-255
       
-      *(image.data(x,y,0,0)) = (int)real % 256; // red channel
-      *(image.data(x,y,0,1)) = (int)(real * complex / 4) % 256; // green channel
-      *(image.data(x,y,0,2)) = (int)complex % 256; // blue channel
+      setRGB(x,y,
+             (int)real % 256, 
+             (int)(real * complex / 4) % 256,
+             (int)complex % 256,
+             image);
     }
   } 
   
