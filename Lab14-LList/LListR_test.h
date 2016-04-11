@@ -464,6 +464,95 @@ public:
     TS_ASSERT( a == b);
     TS_ASSERT( !(a != b));
   }
+
+  void testEq6() {
+    LIST a;
+    a.push_front(5);
+    LIST b;
+    b.push_front(5);
+    b.push_front(5);
+    TS_ASSERT( !(a == b));
+    TS_ASSERT( (a != b));
+  }
+  
+  void testEq7() {
+    LIST a;
+    a.push_front(5);
+    a.push_front(5);
+    LIST b;
+    b.push_front(5);
+    TS_ASSERT( !(a == b));
+    TS_ASSERT( (a != b));
+  }
+  
+  void testEq8() {
+    LIST a;
+    a.push_front(5);
+    a.push_front(6);
+    LIST b;
+    b.push_front(5);
+    b.push_front(5);
+    TS_ASSERT( !(a == b));
+    TS_ASSERT( (a != b));
+  }
+  
+  void testEq9() {
+    LIST a;
+    LIST b;
+    for(int i = 0; i < 100; i++){
+      a.push_front(i);
+      b.push_front(i);
+    }
+    TS_ASSERT( (a == b));
+    TS_ASSERT( !(a != b));
+  }
+  
+  void testEq10() {
+    LIST a;
+    LIST b;
+    for(int i = 0; i < 100; i++){
+      a.push_front(i);
+      b.push_front(i);
+    }
+    b.push_front(0);
+    TS_ASSERT( !(a == b));
+    TS_ASSERT( (a != b));
+  }
+  
+  void testEq11() {
+    LIST a;
+    LIST b;
+    for(int i = 0; i < 100; i++){
+      a.push_front(i);
+      b.push_front(i);
+    }
+    a.push_front(0);
+    TS_ASSERT( !(a == b));
+    TS_ASSERT( (a != b));
+  }
+  
+  void testEq12() {
+    LIST a;
+    LIST b;
+    for(int i = 0; i < 100; i++){
+      a.push_front(i);
+      b.push_front(100 - i);
+    }
+    b.push_front(0);
+    TS_ASSERT( !(a == b));
+    TS_ASSERT( (a != b));
+  }
+  
+  void testEq13() {
+    LIST a;
+    LIST b;
+    for(int i = 0; i < 100; i++){
+      a.push_front(i);
+      b.push_back(99 - i);
+    }
+    TS_ASSERT( (a == b));
+    TS_ASSERT( !(a != b));
+  }
 };
 
 class LListRClear : public CxxTest::TestSuite {
