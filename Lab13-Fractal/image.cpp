@@ -1,6 +1,6 @@
 /*    @file image.cpp    
-      @author <-- Fill in your name here -->
-      @date <-- Fill this in -->
+      @author Eric Turner
+      @date 4/6/2016
 */
 // Example of generating and saving a PNG image.
 #include <iostream>
