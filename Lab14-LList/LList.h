@@ -68,8 +68,16 @@ class LList{
 	}
      
   int getAt(unsigned pos) const{
-		// TODO: Fill me in
-		return 0;
+    node_t* temp = head;
+    while(temp != NULL && pos > 0){
+      temp = temp->next;
+      pos--;
+    }
+    // As long as I don't have a null pointer, assign.
+    if(pos == 0 && temp !=NULL){
+  	  return temp->data;
+    }
+    throw logic_error("Index invalid");
   }
 
   unsigned int size() const{
@@ -84,12 +92,27 @@ class LList{
   }
  
   void push_back(int value){
-    // TODO: Fill me in
+    // Empty list?
+    if (head == NULL){
+      head = new node_t;
+      head->data = value;
+      head->next = NULL;
+    }else{// Not empty
+      node_t* temp;
+      node_t* temp2 = head;
+      while (temp2->next != NULL){
+        temp2 = temp2->next;
+      }
+      temp = new node_t;
+      temp->data = value;
+      temp->next = NULL;
+      temp2->next = temp;
+    }
   }
   
   void push_front(int value){
     // Empty list?
-    if(head == NULL){
+    if (head == NULL){
       head = new node_t;
       head->data = value;
       head->next = NULL;
@@ -124,7 +147,17 @@ class LList{
   }
 	
 	void setAt(int value, unsigned pos){
-		// TODO: Fill me in
+		node_t* temp = head;
+    while(temp != NULL && pos > 0){
+      temp = temp->next;
+      pos--;
+    }
+    // As long as I don't have a null pointer, assign.
+    if(pos == 0 && temp !=NULL){
+    	temp->data = value;
+    	return;
+    }
+    throw logic_error("Index invalid");
   }
 	
 	// Overload [] operator
@@ -143,8 +176,13 @@ class LList{
 	}
 	
 	LList reverse() const{
-		// TODO: Fill me in
-		return LList(); // Remove me!
+    LList revList;
+    node_t* temp = head;
+    while (temp != NULL){
+      revList.push_front(temp->data);
+      temp = temp->next;
+    }
+    return revList;
 	}
 	
 	bool operator==(const LList& other) const{

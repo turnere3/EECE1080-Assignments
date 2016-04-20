@@ -10,27 +10,31 @@
 #include "Pointers.h"
 
 void manip1(Pointers* p){
-  // TODO: Fill me in
+  *p->getA() = 10;
 }
 
 void manip2(Pointers* p){
-  // TODO: Fill me in
+  int *number = new int;
+  *number = 45;
+  p->setB(number);
 }
-
-void manip3(Pointers* p){
-  // TODO: Fill me in
+  
+void manip3(Pointers* p){  
+  p->setB(p->getA());
 }
 
 void manip4(Pointers* p, int* other){
-  // TODO: Fill me in
+  p->setB(other);
 }
 
 void manip5(Pointers* p, int* other){
-  // TODO: Fill me in
+  *other = 45;
+  p->setB(other);
+  p->setC();
 }
 
 void manip6(Pointers* p){
-  // TODO: Fill me in
+  
 }
 
 void manip7(Pointers* p){
@@ -38,7 +42,7 @@ void manip7(Pointers* p){
 }
 
 void manip8(Pointers* p){
-  // TODO: Fill me in
+  p->getC(*a) = 199;
 }
 
 void manip9(Pointers* p, int* other){

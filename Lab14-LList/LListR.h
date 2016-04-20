@@ -63,7 +63,7 @@ class LListR{
 	}
      
   int getAt(unsigned pos) const{
-		if(head == NULL) throw logic_error("Index invalid");
+		if(head == NULL) throw logic_error("Index Invalid");
 		return getAt(pos, head);
   }
   
@@ -72,18 +72,22 @@ class LListR{
       return node->data;
     }
     if( node->next == NULL){
-      throw logic_error("Index invalid");
+      throw logic_error("Index Invalid");
     }
     return getAt(pos-1, node->next);
   }
 
+  unsigned int size(nodeR_t* temp,int count)const {
+    if (temp == NULL){
+      return count;
+    }else{
+      return size(temp->next,count+1);
+    }
+  }
 
   unsigned int size() const{
-    // TODO: Fill me in.  You will likely need to create another
-   // function!
-    return 0;
+    return size(head,0);
   }
- 
  
   void push_back(int value){
     // Empty list?
@@ -127,11 +131,24 @@ class LListR{
     delete temp;
   }
   
-  void pop_back(){
-   // TODO: Fill me in. You will likely need to create another
-   // function!
+  void pop_back(nodeR_t* temp){
+    if(temp->next->next != NULL){
+      pop_back(temp->next);
+    }else{  delete temp->next;
+      temp->next = NULL;
+    }
   }
-	
+  
+  void pop_back(){
+    if(head == NULL)return; // Empty list
+    if(head->next == NULL){ // One element list
+      delete head;
+      head = NULL;
+      return;
+    }
+    pop_back(head);  // Iterate to the second to last.
+  }
+
 	void setAt(int value, unsigned pos){
 		setAt(value, pos, head);
   }
@@ -175,18 +192,21 @@ class LListR{
 	  reverseHelp(node->next, other);
 	}
 	
-	
-	
-	bool operator==(const LListR& other) const{
-	 // TODO: Fill me in.  You will likely need to create another
-   // function!
-   return true;
+	bool compare(nodeR_t* left, nodeR_t* right)const {
+	  if (left == NULL && right == NULL){return true;}
+	  if (left == NULL || right == NULL){return false;}
+	  if (left->data != right->data) {return false;}
+	  return compare (left->next,right->next);
+	}
+	bool operator==(const LListR& other) const {
+    // Sizes differ?
+		// Now step through both lists and verify data
+	  return compare(head,other.head);
 	}
 	
 	bool operator!=(const LListR& other) const{
 		return ! operator==(other);
 	}
-	
 	
 	void clear(){
 		clear(head);
