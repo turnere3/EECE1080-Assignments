@@ -34,23 +34,28 @@ void manip5(Pointers* p, int* other){
 }
 
 void manip6(Pointers* p){
-  
+  *(p->getB()+2) = 10;
 }
 
 void manip7(Pointers* p){
-  // TODO: Fill me in
+  *p->getB() = 15;
 }
 
 void manip8(Pointers* p){
-  p->getC(*a) = 199;
+  int num = 199;
+  p->setB(&num);
+  p->setC();
 }
 
 void manip9(Pointers* p, int* other){
-  // TODO: Fill me in
+  p->setB(other);
 }
 
 void manip10(Pointers* p){
-  // TODO: Fill me in
+  int num = 199;
+  (p+5)->setB(&num);
+  (*(p+5)).setB(&num);
+  p[5].setC();
 }
 
 #endif
